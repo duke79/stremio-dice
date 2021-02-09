@@ -88,7 +88,11 @@ const populateMovie = () => {
     throw new Error('No movies in the list!');
   };
 
+  console.log({ item });
+
   render(item);
+  populateTrailers(item);
+
   const tryMore = !item.description || !item.director;
   if (tryMore)
     fetch(`https://v3-cinemeta.strem.io/meta/${item.type}/${item.id}.json`)
@@ -112,6 +116,18 @@ const populateGenres = () => {
   } else {
     fetchMovies();
   }
+};
+
+const populateTrailers = (movie) => {
+  document.getElementById("trailers").innerHTML = '';
+  movie?.trailers?.forEach((trailer, idx) => {
+    if(idx > 2) return;
+    const elem = document.createElement('iframe');
+    elem.setAttribute('src', `https://www.youtube.com/embed/${trailer.source}`);
+    elem.setAttribute('class', 'trailer');
+    // console.log({ elem });
+    document.getElementById("trailers").appendChild(elem);
+  });
 };
 
 function onGenreSelected() {

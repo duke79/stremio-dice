@@ -74,3 +74,14 @@ body {
 #test-dropdown {
   width: 100px;
 }
+#trailers {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  display: flex;
+  flex-direction: column;
+}
+.trailer {
+  width: 200px;
+  height: 200px;
+}
