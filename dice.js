@@ -125,6 +125,7 @@ const populateTrailers = (movie) => {
     const elem = document.createElement('iframe');
     elem.setAttribute('src', `https://www.youtube.com/embed/${trailer.source}`);
     elem.setAttribute('class', 'trailer');
+    elem.setAttribute('allowfullscreen', true);
     // console.log({ elem });
     document.getElementById("trailers").appendChild(elem);
   });
